@@ -1,0 +1,28 @@
+# Development Environment Configuration
+# Extends base.yml with development-specific settings
+
+# Inherit from base configuration
+extends: base.yml
+
+# Environment-specific paths
+paths:
+  base_dir: "data/development"
+  cache_dir: "data/development/cache"
+  raw_data: "data/development/raw"
+  processed: "data/development/processed"
+  reports: "data/development/reports"
+  logs: "data/development/logs"
+  visualizations: "data/development/visualizations"
+
+# Development-specific settings
+yahoo_finance:
+  rate_limit_pause: 0.1  # Faster for development
+  max_retries: 2         # Fewer retries for quicker feedback
+
+logging:
+  level: DEBUG  # More verbose logging for development
+  file: "data/development/logs/ingestion.log"
+
+# Development-specific defaults
+defaults:
+  lookback_days: 30  # Shorter period for faster development 

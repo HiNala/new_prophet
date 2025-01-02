@@ -1,0 +1,29 @@
+# Test Environment Configuration
+# Extends base.yml with test-specific settings
+
+# Inherit from base configuration
+extends: base.yml
+
+# Environment-specific paths
+paths:
+  base_dir: "data/test"
+  cache_dir: "data/test/cache"
+  raw_data: "data/test/raw"
+  processed: "data/test/processed"
+  reports: "data/test/reports"
+  logs: "data/test/logs"
+  visualizations: "data/test/visualizations"
+
+# Test-specific settings
+yahoo_finance:
+  rate_limit_pause: 0.1  # Faster for testing
+  max_retries: 1         # Minimal retries for quick tests
+
+logging:
+  level: DEBUG  # Verbose logging for debugging tests
+  file: "data/test/logs/ingestion.log"
+
+# Test-specific defaults
+defaults:
+  lookback_days: 7    # Minimal period for quick tests
+  batch_size: 2       # Small batch size for testing 

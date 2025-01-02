@@ -1,0 +1,28 @@
+# Production Environment Configuration
+# Extends base.yml with production-specific settings
+
+# Inherit from base configuration
+extends: base.yml
+
+# Environment-specific paths
+paths:
+  base_dir: "data/production"
+  cache_dir: "data/production/cache"
+  raw_data: "data/production/raw"
+  processed: "data/production/processed"
+  reports: "data/production/reports"
+  logs: "data/production/logs"
+  visualizations: "data/production/visualizations"
+
+# Production-specific settings
+yahoo_finance:
+  rate_limit_pause: 1.0  # More conservative rate limiting
+  max_retries: 5         # More retries for reliability
+
+logging:
+  level: WARNING  # Less verbose logging for production
+  file: "data/production/logs/ingestion.log"
+
+# Production-specific visualization settings
+visualization:
+  dpi: 600  # Higher quality for production reports 
